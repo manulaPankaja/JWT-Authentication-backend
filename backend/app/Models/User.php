@@ -64,4 +64,19 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+
+        //This is a PHP code snippet that defines a mutator method for the password attribute of a model in Laravel, which allows you to modify the value of the attribute before it is saved to the database.
+
+        // The setPasswordAttribute() method takes a single argument $value, which represents the new value of the password attribute.
+
+        // Inside the method, the $value is passed through the bcrypt() function, which hashes the password value using the bcrypt algorithm. The resulting hash value is then assigned to the password attribute using the $this->attributes property.
+
+        // By using this mutator method, you can ensure that the password is always stored securely in the database as a hashed value, which helps to protect against unauthorized access to user passwords in case of a data breach.
+    }
+
+    //setPasswordAttribute() mutator method will be called automatically, and the password value will be hashed before it is saved to the users table in the database.
 }
